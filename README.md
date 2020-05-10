@@ -9,9 +9,9 @@ Radar_Target_Generation_and_Detection.m is the main function in matlab
 
 #### Implementation steps for the 2D CFAR process.
 
-*Slide Window through the complete Range Doppler Map
+* Slide Window through the complete Range Doppler Map
 
-*Set the training, guard cells and offset
+* Set the training, guard cells and offset
 
 * design a loop such that it slides the CUT across range doppler map by giving margins at the edges for Training and Guard Cells.
 
