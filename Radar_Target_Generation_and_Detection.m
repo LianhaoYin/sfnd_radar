@@ -137,9 +137,9 @@ figure ('Name','Range from First FFT')
  % plot FFT output 
 Fs = mean(diff(t));
 f = Fs*(0:(Nr/2))/Nr';
-plot(f,P1) 
+plot(P1) 
 title('Single-Sided Amplitude Spectrum of X(t)')
-xlabel('f (Hz)')
+%xlabel('f (Hz)')
 ylabel('|P1(f)|')
 %axis ([0 200 0 1]);
 
@@ -244,7 +244,7 @@ threshold = zeros(Nr,Nd);
            if(RDM(i,j) < threshold(i,j))
                RDM(i,j) = 0;
            else
-               %RDM(i,j) = max_T;
+               RDM(i,j) = 1;
            end
            %signal_cfar(i,j) = signal;
            
