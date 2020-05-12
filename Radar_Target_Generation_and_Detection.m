@@ -78,7 +78,7 @@ for i=1:length(t)
     % *%TODO* :
     %For each time stamp update the Range of the Target for constant velocity. 
     
-    r_t(i) = 150; % c * Tchirp * fb/(2 * B);
+    r_t(i) = position_ini + Velocity*t(i); %150; % c * Tchirp * fb/(2 * B);
     
     td(i) = r_t(i) * 2 / c;% time delay
     % *%TODO* :
@@ -91,8 +91,8 @@ for i=1:length(t)
     %Now by mixing the Transmit and Receive generate the beat signal
     %This is done by element wise matrix multiplication of Transmit and
     %Receiver Signal
-    Mix(i) = cos(2*pi*(2*slope * r_t(i)/c *t(i) + 2*fc*Velocity/c*t(i))) + 1*randn(1,1);
-    
+    %Mix(i) = cos(2*pi*(2*slope * r_t(i)/c *t(i) + 2*fc*Velocity/c*t(i))) + 1*randn(1,1);
+    Mix(i) = Tx(i).*Rx(i);
 end
 
 
@@ -107,10 +107,10 @@ end
 X = reshape(Mix,Nr*Nd,1);
 
 % Plot the noisy signal in the time domain. It is difficult to identify the frequency components by looking at the signal X(t). 
-plot(1000*t(1:Nr) ,X(1:Nr));
-title('Signal Corrupted with Zero-Mean Random Noise')
-xlabel('t (milliseconds)')
-ylabel('X(t)')
+%plot(1000*t(1:Nr) ,X(1:Nr));
+%title('Signal Corrupted with Zero-Mean Random Noise')
+%xlabel('t (milliseconds)')
+%ylabel('X(t)')
 
  % *%TODO* :
 %run the FFT on the beat signal along the range bins dimension (Nr) and
@@ -141,7 +141,7 @@ plot(f,P1)
 title('Single-Sided Amplitude Spectrum of X(t)')
 xlabel('f (Hz)')
 ylabel('|P1(f)|')
-axis ([0 200 0 1]);
+%axis ([0 200 0 1]);
 
 
 
